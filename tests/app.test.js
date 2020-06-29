@@ -25,7 +25,6 @@ describe('GET /posts/1/comments', () => {
       });
   });
 });
-
 describe('POST /posts/1/comments', () => {
   it('responds with success and posted comment', (done) => {
     const commentBody = 'hello, comment';
@@ -35,6 +34,33 @@ describe('POST /posts/1/comments', () => {
       .expect(201)
       .then(response => {
         expect(response.body['body']).toEqual(commentBody);
+        done();
+      });
+  });
+});
+
+describe('GET /albums/1/photos', () => {
+  it('responds with albums relating to albumId: 1', (done) => {
+    request(app)
+      .get('/albums/1/photos')
+      .expect(200)
+      .then(response => {
+        const firstPhoto = 0;
+        expect(response.body.length).toBeGreaterThanOrEqual(1);
+        expect(response.body[firstPhoto]['albumId']).toBe(1);
+        done();
+      });
+  });
+});
+describe('POST /albums/1/photos', () => {
+  it('responds with success and posted photos', (done) => {
+    const photoUrl = 'https://photo.url';
+    request(app)
+      .post('/albums/1/photos')
+      .send({url: photoUrl})
+      .expect(201)
+      .then(response => {
+        expect(response.body['url']).toEqual(photoUrl);
         done();
       });
   });

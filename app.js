@@ -33,4 +33,29 @@ app.post('/posts/:id/comments', (req, res) => {
     .json(req.body);
 });
 
+album1_photos = [
+  {
+    "albumId": 1,
+    "id": 1,
+    "title": "accusamus beatae ad facilis cum similique qui sunt",
+    "url": "https://via.placeholder.com/600/92c952",
+    "thumbnailUrl": "https://via.placeholder.com/150/92c952"
+  },
+  {
+    "albumId": 1,
+    "id": 2,
+    "title": "reprehenderit est deserunt velit ipsam",
+    "url": "https://via.placeholder.com/600/771796",
+    "thumbnailUrl": "https://via.placeholder.com/150/771796"
+  },
+]
+app.get('/albums/:id/photos', (req, res) => {
+  res.json(album1_photos);
+});
+app.post('/albums/:id/photos', (req, res) => {
+  res
+    .status(201)
+    .json(req.body);
+});
+
 module.exports = app
