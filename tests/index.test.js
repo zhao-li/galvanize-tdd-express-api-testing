@@ -6,8 +6,11 @@ const hostUrl = 'https://jsonplaceholder.typicode.com/';
 describe('GET /posts/1/comments', () => {
   it('responds with a 200', (done) => {
     request(hostUrl)
-      .get('/')
-      //.get('/posts/1/comments')
-      .expect(200, done)
-  })
-})
+      .get('posts/1/comments')
+      .expect(200)
+      .then(response => {
+        expect(response.body).toBeDefined();
+        done();
+      });
+  });
+});
