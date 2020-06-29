@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "nodemon app-shim.js",
-    "test": "jest"
+    "test": "jest -b 0"
   },
   "repository": {
     "type": "git",
