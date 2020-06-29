@@ -27,5 +27,10 @@ post1_comments = [
 app.get('/posts/:id/comments', (req, res) => {
   res.json(post1_comments);
 });
+app.post('/posts/:id/comments', (req, res) => {
+  res
+    .status(201)
+    .json(req.body);
+});
 
 module.exports = app

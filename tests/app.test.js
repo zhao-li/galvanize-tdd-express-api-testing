@@ -25,3 +25,18 @@ describe('GET /posts/1/comments', () => {
       });
   });
 });
+
+describe('POST /posts/1/comments', () => {
+  it('responds with success and posted comment', (done) => {
+    const commentBody = 'hello, comment';
+    request(app)
+      .post('/posts/1/comments')
+      .send({body: commentBody})
+      .expect(201)
+      .then(response => {
+        expect(response.body['body']).toEqual(commentBody);
+        done();
+      });
+  });
+});
+
