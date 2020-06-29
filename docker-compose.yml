@@ -13,6 +13,8 @@ x-app-base:
     - scripts/start_app.sh
   env_file:
     - docker/app.env
+  ports:
+    - ${DEFAULT_APP_PORT}
   volumes:
     - node_modules:${APP_DIR}/node_modules
 

@@ -2,5 +2,7 @@ version: '3.4'
 
 services:
   app:
+    ports:
+      - ${DEFAULT_APP_PORT}:${DEFAULT_APP_PORT}
     volumes:
       - .:${APP_DIR}/
