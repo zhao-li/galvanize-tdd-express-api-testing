@@ -58,4 +58,71 @@ app.post('/albums/:id/photos', (req, res) => {
     .json(req.body);
 });
 
+user1_albums = [
+  {
+    "userId": 1,
+    "id": 9,
+    "title": "saepe unde necessitatibus rem"
+  },
+  {
+    "userId": 1,
+    "id": 10,
+    "title": "distinctio laborum qui"
+  }
+]
+app.get('/users/:id/albums', (req, res) => {
+  res.json(user1_albums);
+});
+app.post('/users/:id/albums', (req, res) => {
+  res
+    .status(201)
+    .json(req.body);
+});
+
+user1_todos = [
+  {
+    "userId": 1,
+    "id": 1,
+    "title": "delectus aut autem",
+    "completed": false
+  },
+  {
+    "userId": 1,
+    "id": 2,
+    "title": "quis ut nam facilis et officia qui",
+    "completed": false
+  }
+]
+app.get('/users/:id/todos', (req, res) => {
+  res.json(user1_todos);
+});
+app.post('/users/:id/todos', (req, res) => {
+  res
+    .status(201)
+    .json(req.body);
+});
+
+user1_posts = [
+  {
+    "userId": 1,
+    "id": 1,
+    "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+    "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+  },
+  {
+    "userId": 1,
+    "id": 2,
+    "title": "qui est esse",
+    "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+  }
+]
+app.get('/users/:id/posts', (req, res) => {
+  res.json(user1_posts);
+});
+app.post('/users/:id/posts', (req, res) => {
+  res
+    .status(201)
+    .json(req.body);
+});
+
 module.exports = app
