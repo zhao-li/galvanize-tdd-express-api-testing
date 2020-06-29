@@ -17,6 +17,20 @@ describe('GET /posts/1/comments', () => {
   });
 });
 
+describe('POST /posts/1/comments', () => {
+  it('responds with success', (done) => {
+    const commentBody = 'hello, comment';
+    request(hostUrl)
+      .post('posts/1/comments')
+      .send({body: commentBody})
+      .expect(201)
+      .then(response => {
+        expect(response.body['body']).toEqual(commentBody);
+        done();
+      });
+  });
+});
+
 describe('GET /albums/1/photos', () => {
   it('responds with photos relating to albumId: 1', (done) => {
     request(hostUrl)
