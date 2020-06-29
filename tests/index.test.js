@@ -18,7 +18,7 @@ describe('GET /posts/1/comments', () => {
 });
 
 describe('POST /posts/1/comments', () => {
-  it('responds with success', (done) => {
+  it('responds with success and posted comment', (done) => {
     const commentBody = 'hello, comment';
     request(hostUrl)
       .post('posts/1/comments')
@@ -45,6 +45,20 @@ describe('GET /albums/1/photos', () => {
   });
 });
 
+describe('POST /albums/1/photos', () => {
+  it('responds with success and posted photo', (done) => {
+    const photoUrl = 'https://photo.url';
+    request(hostUrl)
+      .post('albums/1/photos')
+      .send({url: photoUrl})
+      .expect(201)
+      .then(response => {
+        expect(response.body['url']).toEqual(photoUrl);
+        done();
+      });
+  });
+});
+
 describe('GET /users/1/albums', () => {
   it('responds with albums relating to userId: 1', (done) => {
     request(hostUrl)
@@ -54,6 +68,20 @@ describe('GET /users/1/albums', () => {
         const firstAlbum = 0;
         expect(response.body.length).toBeGreaterThanOrEqual(1);
         expect(response.body[firstAlbum]['userId']).toBe(1);
+        done();
+      });
+  });
+});
+
+describe('POST /users/1/albums', () => {
+  it('responds with success and posted album', (done) => {
+    const albumTitle = 'hello, album';
+    request(hostUrl)
+      .post('users/1/albums')
+      .send({title: albumTitle})
+      .expect(201)
+      .then(response => {
+        expect(response.body['title']).toEqual(albumTitle);
         done();
       });
   });
@@ -73,6 +101,20 @@ describe('GET /users/1/todos', () => {
   });
 });
 
+describe('POST /users/1/todos', () => {
+  it('responds with success and posted todo', (done) => {
+    const todoTitle = 'hello, todo';
+    request(hostUrl)
+      .post('users/1/todos')
+      .send({title: todoTitle})
+      .expect(201)
+      .then(response => {
+        expect(response.body['title']).toEqual(todoTitle);
+        done();
+      });
+  });
+});
+
 describe('GET /users/1/posts', () => {
   it('responds with posts relating to userId: 1', (done) => {
     request(hostUrl)
@@ -86,3 +128,18 @@ describe('GET /users/1/posts', () => {
       });
   });
 });
+
+describe('POST /users/1/posts', () => {
+  it('responds with success and posted post', (done) => {
+    const postBody = 'hello, post';
+    request(hostUrl)
+      .post('users/1/posts')
+      .send({body: postBody})
+      .expect(201)
+      .then(response => {
+        expect(response.body['body']).toEqual(postBody);
+        done();
+      });
+  });
+});
+
