@@ -13,7 +13,12 @@ x-app-base:
     - scripts/start_app.sh
   env_file:
     - docker/app.env
+  volumes:
+    - node_modules:${APP_DIR}/node_modules
 
 services:
   app:
     <<: *app-base
+
+volumes:
+  node_modules:
