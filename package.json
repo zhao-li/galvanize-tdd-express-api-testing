@@ -15,8 +15,8 @@
     "supertest": "^4.0.2"
   },
   "scripts": {
-    "start": "nodemon app-shim.js",
-    "test": "jest -b 0"
+    "start": "nodemon app.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",

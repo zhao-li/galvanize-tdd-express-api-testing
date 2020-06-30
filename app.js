@@ -125,4 +125,9 @@ app.post('/users/:id/posts', (req, res) => {
     .json(req.body);
 });
 
-module.exports = app
+let server = app.listen(3000);
+
+module.exports = {
+  app: app,
+  server: server
+};

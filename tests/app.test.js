@@ -1,13 +1,14 @@
 const request = require('supertest')
 
+const index = require("../app");
 let app;
 let server;
 
 beforeAll(() => {
-  app = require('../app');
-  server = app.listen(3000);
+  app = index.app;
 });
 afterAll(() => {
+  const server  = index.server;
   server.close();
 });
 
